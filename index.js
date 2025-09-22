@@ -18,6 +18,7 @@ const View = require("@saltcorn/data/models/view");
 const Form = require("@saltcorn/data/models/form");
 const FieldRepeat = require("@saltcorn/data/models/fieldrepeat");
 const { eval_expression } = require("@saltcorn/data/models/expression");
+const { objectToQueryString } = require("@saltcorn/data/utils");
 module.exports = {
   sc_plugin_api_version: 1,
 
@@ -54,7 +55,7 @@ module.exports = {
         )
           return;
 
-        const state = state_fml
+        const state_obj = state_fml
           ? eval_expression(
               state_fml,
               { url, ...(row || {}) },
@@ -62,8 +63,9 @@ module.exports = {
               "display_view_overlay state formula"
             )
           : {};
+        const state = objectToQueryString(state_obj);
         return {
-          eval_js: `activate_global_overlays(${JSON.stringify({
+          eval_js: `activate_view_overlay(${JSON.stringify({
             state,
             view,
             location,

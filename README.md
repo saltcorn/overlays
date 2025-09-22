@@ -2,11 +2,11 @@
 
 View overlays
 
-This module enables to you run a view as a static overlay on pages and views in Saltcorn. It supplies an action `` that causes an overlay to appear on the current view.
+This module enables to you run a view as a static overlay on pages and views in Saltcorn. It supplies an action `display_view_overlay` that causes an overlay to appear on the current view.
 
-To use this as a PageLoad action, Saltcorn 1.4.0-beta.5 or later is required. Otherwise use it as an On Page Load action inside specific views or pages.
+To use this as a PageLoad action, Saltcorn 1.4.0-beta.5 or later is required. Otherwise use it as an On Page Load action inside specific views or pages, or in response to button clicks. 
 
-To use this:
+To use this with PageLoad:
 
 1. Build a view you would like to serve as an overlay on pages and views. Ideally, this should have all of its content on a card or a container with a a set background - otherwise it will appear transparent. Also set the height and the width in the box settings.
 2. Create a trigger with When = PageLoad, action = display_view_overlay.
